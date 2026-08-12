@@ -2,7 +2,7 @@ name: DisplayNameFmt
 description: ${description}
 version: '${version}'
 main: moe.skd.displaynamefmt.DisplayNameFmt
-api-version: '1.21.11'
+api-version: '1.20'
 authors:
   - RimuruChan
 website: https://skd.moe

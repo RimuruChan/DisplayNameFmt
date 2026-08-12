@@ -9,7 +9,7 @@
 | Java | 25 |
 | Gradle Wrapper | 9.6.1 |
 | Kotlin | 2.4.10 |
-| Paper API | 1.21.11 |
+| Paper API | 1.20.1（最低兼容基线） |
 | PlaceholderAPI | 2.11.6 |
 
 项目自带 Gradle Wrapper，不需要另外安装 Gradle。

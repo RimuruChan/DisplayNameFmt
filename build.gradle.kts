@@ -23,14 +23,14 @@ configurations.testImplementation {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.21.11-R0.1-SNAPSHOT") {
+    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT") {
         isTransitive = false
     }
     compileOnly("me.clip:placeholderapi:2.11.6") {
         isTransitive = false
     }
-    add(adventureApi.name, "net.kyori:adventure-api:4.26.1")
-    add(adventureApi.name, "net.kyori:adventure-text-serializer-legacy:4.26.1")
+    add(adventureApi.name, "net.kyori:adventure-api:4.14.0")
+    add(adventureApi.name, "net.kyori:adventure-text-serializer-legacy:4.14.0")
 
     implementation("org.yaml:snakeyaml:2.5")
 

@@ -2,7 +2,7 @@
 
 ![Java 25](https://img.shields.io/badge/Java-25-orange?logo=openjdk)
 ![Kotlin](https://img.shields.io/badge/Kotlin-2.4.10-7F52FF?logo=kotlin&logoColor=white)
-![Paper](https://img.shields.io/badge/Paper-1.21.11-222222)
+![Paper](https://img.shields.io/badge/Paper-1.20--26.2-222222)
 ![License](https://img.shields.io/badge/License-GPLv3-blue)
 
 一个简单、直接的 Paper 显示名格式插件。
@@ -25,7 +25,7 @@
 
 | 项目 | 要求 |
 | --- | --- |
-| 服务端 | Paper 1.21.11 |
+| 服务端 | Paper 1.20–26.2 |
 | Java | 25 |
 | 前置插件 | PlaceholderAPI 2.11.6 或更高版本 |
 
