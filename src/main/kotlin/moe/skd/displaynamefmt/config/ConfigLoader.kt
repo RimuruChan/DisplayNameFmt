@@ -25,6 +25,8 @@ internal object ConfigLoader {
 
         return DisplayNameConfig(
             format = format,
+            prefix = displayName.scalar("prefix"),
+            suffix = displayName.scalar("suffix"),
             refreshIntervalTicks = refreshInterval,
             conditions = conditions(root.mapping("conditions")),
         )

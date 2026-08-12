@@ -20,7 +20,9 @@ class ConfigLoaderTest {
 
         val config = ConfigLoader.load(path, template(), LOGGER)
 
-        assertEquals("%player_name%", config.format)
+        assertEquals("%displaynamefmt_prefix%%player_name%%displaynamefmt_suffix%", config.format)
+        assertEquals("", config.prefix)
+        assertEquals("", config.suffix)
         assertEquals(20, config.refreshIntervalTicks)
         assertTrue(config.conditions.isEmpty())
         assertTrue(Files.readString(path).contains("config-version: 1"))
@@ -66,8 +68,32 @@ class ConfigLoaderTest {
         val config = ConfigLoader.load(path, template(), LOGGER)
 
         assertEquals("%player_name% custom", config.format)
+        assertEquals("", config.prefix)
+        assertEquals("", config.suffix)
         assertEquals(20, config.refreshIntervalTicks)
         assertTrue(config.conditions.isEmpty())
+    }
+
+    @Test
+    fun parsesPrefixAndSuffixFormats() {
+        val path = temporaryDirectory.resolve("config.yml")
+        Files.writeString(
+            path,
+            """
+            config-version: 1
+            display-name:
+              format: '%displaynamefmt_prefix%%player_name%%displaynamefmt_suffix%'
+              prefix: '%luckperms_prefix%'
+              suffix: ' &8[%player_world%]'
+              refresh-interval-ticks: 20
+            conditions: {}
+            """.trimIndent(),
+        )
+
+        val config = ConfigLoader.load(path, template(), LOGGER)
+
+        assertEquals("%luckperms_prefix%", config.prefix)
+        assertEquals(" &8[%player_world%]", config.suffix)
     }
 
     @Test

@@ -75,7 +75,7 @@ src/
 
 - `DisplayNameFmt.kt`：插件生命周期、命令和定时刷新
 - `DisplayNameRenderer.kt`：解析 PAPI 变量并生成 Adventure 文本
-- `DisplayNameExpansion.kt`：提供命名条件 PAPI 变量
+- `DisplayNameExpansion.kt`：提供 prefix、suffix 和命名条件 PAPI 变量
 - `ConditionParser.kt`：读取条件表达式
 - `ConditionEngine.kt`：计算条件并处理递归
 - `ConfigLoader.kt`：把 YAML 转成运行时配置

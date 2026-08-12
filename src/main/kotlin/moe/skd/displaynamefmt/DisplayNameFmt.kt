@@ -75,6 +75,12 @@ class DisplayNameFmt : JavaPlugin() {
     internal fun renderCondition(name: String, player: Player): String? =
         renderer.renderCondition(name, player)
 
+    internal fun renderPrefix(player: Player): String =
+        renderer.renderPrefix(player)
+
+    internal fun renderSuffix(player: Player): String =
+        renderer.renderSuffix(player)
+
     private fun refreshAll() {
         server.onlinePlayers.forEach(::refresh)
     }

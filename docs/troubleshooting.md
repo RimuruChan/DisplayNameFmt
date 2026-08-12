@@ -40,7 +40,19 @@ DisplayNameFmt 直接使用 PlaceholderAPI 的解析结果。PAPI 无法解析�
 
 这是正常情况。DisplayNameFmt 设置的是 Paper 的玩家显示名，不是玩家真实名称、头顶名称或 Tab 列表名称。
 
-要修改这些位置，需要对应的名称牌或 Tab 插件。它们是否能读取 DisplayNameFmt 设置的显示名，要看对应插件的功能。
+要修改这些位置，需要对应的名称牌或 Tab 插件。如果它支持 PlaceholderAPI，可以让它读取 `%displaynamefmt_prefix%` 和 `%displaynamefmt_suffix%`。配置方法见[前缀与后缀](prefix-suffix.md)。
+
+## 🪪 Prefix/suffix 没有效果
+
+请检查：
+
+- `display-name.prefix` 和 `display-name.suffix` 是否填写正确
+- 用 PAPI 测试时，`%displaynamefmt_prefix%` 和 `%displaynamefmt_suffix%` 是否能正常解析
+- 名称牌插件是否支持 PlaceholderAPI
+- 是否已经在名称牌插件中填写这两个变量
+- 名称牌插件是否会刷新 PAPI 变量
+
+DisplayNameFmt 不会写入 Vault 或 LuckPerms，也不负责发送名称牌数据包。更多说明见[前缀与后缀](prefix-suffix.md)。
 
 ## 🔁 显示名被改回去了
 

@@ -1,6 +1,6 @@
 # ⚙️ 配置说明
 
-[返回 README](../README.md) · [条件表达式](conditions.md) · [配置迁移](migration.md)
+[返回 README](../README.md) · [条件表达式](conditions.md) · [前缀与后缀](prefix-suffix.md) · [配置迁移](migration.md)
 
 配置文件位于：
 
@@ -16,7 +16,9 @@ plugins/DisplayNameFmt/config.yml
 config-version: 1
 
 display-name:
-  format: '%displaynamefmt_condition_staff-prefix%&f%player_name% &8(&7%player_world%&8)'
+  prefix: '%displaynamefmt_condition_staff-prefix%'
+  format: '%displaynamefmt_prefix%&f%player_name%%displaynamefmt_suffix%'
+  suffix: ' &8(&7%player_world%&8)'
   refresh-interval-ticks: 20
 
 conditions:
@@ -47,13 +49,40 @@ display-name:
   format: '&7[&#55ff99%player_world%&7] &f%player_name%'
 ```
 
-DisplayNameFmt 自己只提供命名条件变量：
+DisplayNameFmt 提供以下变量：
 
 ```text
+%displaynamefmt_prefix%
+%displaynamefmt_suffix%
 %displaynamefmt_condition_<条件名>%
 ```
 
 如果要做权限、延迟、世界等判断，请看[条件表达式](conditions.md)。
+
+### `display-name.prefix`
+
+DisplayNameFmt 自己的前缀格式。它会直接经过 PlaceholderAPI 解析，并通过下面的变量提供给其他格式或插件：
+
+```text
+%displaynamefmt_prefix%
+```
+
+可以把 LuckPerms 前缀作为输入：
+
+```yaml
+display-name:
+  prefix: '%luckperms_prefix%'
+```
+
+这只会读取 PAPI 变量，不会修改 LuckPerms 或 Vault。详细用法见[前缀与后缀](prefix-suffix.md)。
+
+### `display-name.suffix`
+
+和 `display-name.prefix` 相同，但它通过下面的变量输出后缀：
+
+```text
+%displaynamefmt_suffix%
+```
 
 ### `display-name.refresh-interval-ticks`
 
@@ -130,5 +159,6 @@ DisplayNameFmt 不会自己冒充其他插件的变量。变量由 PlaceholderAP
 - 不会直接修改玩家头顶名称
 - 不会直接修改 Tab 列表名称
 - 聊天插件是否显示它，取决于聊天插件是否读取 Paper 的显示名
+- 支持 PAPI 的插件可以直接读取 `%displaynamefmt_prefix%` 和 `%displaynamefmt_suffix%`
 
 如果你同时安装了其他显示名插件，后写入显示名的插件可能覆盖先写入的结果。

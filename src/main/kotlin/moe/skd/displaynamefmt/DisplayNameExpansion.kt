@@ -17,11 +17,18 @@ internal class DisplayNameExpansion(
 
     override fun onPlaceholderRequest(player: Player?, params: String): String? {
         player ?: return null
-        if (!params.startsWith(CONDITION_PREFIX, ignoreCase = true)) return null
-        return plugin.renderCondition(params.substring(CONDITION_PREFIX.length), player)
+        return when {
+            params.equals(PREFIX, ignoreCase = true) -> plugin.renderPrefix(player)
+            params.equals(SUFFIX, ignoreCase = true) -> plugin.renderSuffix(player)
+            params.startsWith(CONDITION_PREFIX, ignoreCase = true) ->
+                plugin.renderCondition(params.substring(CONDITION_PREFIX.length), player)
+            else -> null
+        }
     }
 
     private companion object {
+        const val PREFIX = "prefix"
+        const val SUFFIX = "suffix"
         const val CONDITION_PREFIX = "condition_"
     }
 }

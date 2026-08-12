@@ -2,7 +2,11 @@ config-version: 1
 
 display-name:
   # 直接交给 PlaceholderAPI 解析，支持 & 颜色和 &#RRGGBB 真彩色。
-  format: '%player_name%'
+  format: '%displaynamefmt_prefix%%player_name%%displaynamefmt_suffix%'
+  # 这两段也会直接交给 PlaceholderAPI 解析，并分别提供为
+  # %displaynamefmt_prefix% 和 %displaynamefmt_suffix%。
+  prefix: ''
+  suffix: ''
   # 定时重新计算 PAPI 变量和权限，最小值是 1 tick。
   refresh-interval-ticks: 20
 

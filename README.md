@@ -16,6 +16,7 @@
 - 支持 RGB 真彩色，例如 `&#55ff99`
 - 支持数字、文字、权限判断
 - 支持 AND、OR 和条件递归拼接
+- 提供自己的 prefix 和 suffix PAPI 变量，名称牌、Tab 和聊天插件可以直接读取
 - 定时刷新显示名，玩家换世界或重生时也会立即刷新
 - 支持 `/displaynamefmt reload` 热重载
 - 配置文件带版本号，升级插件时会自动迁移旧配置
@@ -43,7 +44,9 @@
 config-version: 1
 
 display-name:
-  format: '&7[&#55ff99%player_world%&7] &f%player_name%'
+  format: '%displaynamefmt_prefix%%player_name%%displaynamefmt_suffix%'
+  prefix: '&7[&#55ff99%player_world%&7] &f'
+  suffix: ''
   refresh-interval-ticks: 20
 
 conditions: {}
@@ -57,7 +60,9 @@ conditions: {}
 
 ```yaml
 display-name:
-  format: '%displaynamefmt_condition_staff-prefix%%player_name%'
+  format: '%displaynamefmt_prefix%%player_name%%displaynamefmt_suffix%'
+  prefix: '%displaynamefmt_condition_staff-prefix%'
+  suffix: ''
   refresh-interval-ticks: 20
 
 conditions:
@@ -72,6 +77,13 @@ conditions:
 
 ```text
 %displaynamefmt_condition_<条件名>%
+```
+
+插件自己的前后缀也可以直接使用：
+
+```text
+%displaynamefmt_prefix%
+%displaynamefmt_suffix%
 ```
 
 条件结果还能引用另一个条件，所以可以一层一层拼接。插件会拦住循环引用，避免无限递归。
@@ -90,6 +102,7 @@ conditions:
 | --- | --- |
 | [配置说明](docs/configuration.md) | 每个配置项、颜色和完整示例 |
 | [条件表达式](docs/conditions.md) | 运算符、AND / OR、权限和递归拼接 |
+| [前缀与后缀](docs/prefix-suffix.md) | 自有 prefix/suffix、LuckPerms 输入和名称牌用法 |
 | [配置迁移](docs/migration.md) | `config-version`、自动补全和旧配置升级 |
 | [常见问题](docs/troubleshooting.md) | 变量不解析、颜色不显示、重载失败等问题 |
 | [开发与构建](docs/development.md) | 本地构建、测试和项目结构 |
