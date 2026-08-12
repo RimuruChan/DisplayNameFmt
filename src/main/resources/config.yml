@@ -1,0 +1,11 @@
+config-version: 1
+
+display-name:
+  # 直接交给 PlaceholderAPI 解析，支持 & 颜色和 &#RRGGBB 真彩色。
+  format: '%player_name%'
+  # 定时重新计算 PAPI 变量和权限，最小值是 1 tick。
+  refresh-interval-ticks: 20
+
+# 命名条件会变成 %displaynamefmt_condition_<条件名>%。
+# 表达式支持 PAPI 变量和常用判断运算，示例见 docs/conditions.md。
+conditions: {}

@@ -1,0 +1,18 @@
+name: DisplayNameFmt
+description: ${description}
+version: '${version}'
+main: moe.skd.displaynamefmt.DisplayNameFmt
+api-version: '1.21.11'
+authors:
+  - RimuruChan
+website: https://skd.moe
+depend:
+  - PlaceholderAPI
+commands:
+  displaynamefmt:
+    description: Reload DisplayNameFmt configuration
+    usage: /displaynamefmt reload
+    permission: displaynamefmt.reload
+permissions:
+  displaynamefmt.reload:
+    default: op
